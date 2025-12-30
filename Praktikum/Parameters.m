@@ -57,7 +57,7 @@ C_m_T_alpha = 0;
 %% Longitudinal Control and Hinge Moment Derivatives (Stability Axes, 1/rad)
 C_D_delta_e = 0;
 C_L_delta_e = 0.43;
-C_m_delta_e = -1.029:
+C_m_delta_e = -1.029;
 
 %% Longitudinal Control and Hinge Moment Derivatives: Cont'd (Stability Axes, 1/rad)
 C_h_q = -0.0549; % konnte es nicht genau lesen obs q oder alpha ist
@@ -78,46 +78,16 @@ C_n_r = -0.1151;
 
 
 %% Lateral-Directional Control and Hinge Moment Derivatives (Stability Axes, Dimensionless)
-C_l
-0.229
-0.229
-0.229
-C l r
-0.0147
-0.0147
-0.0147
-0
-C y 2
-0
-0
-C y r
-0.187
-0.187
-0.187
-C n d 2
--0.0504
--0.0216
--0.0786
-C n delta t
--0.0805
--0.0645
--0.0604
-C b 2
-???
-???
-???
-Ch
--0.369
--0.363
--0.369
-C h v
-0.0819
-0.0819
-0.0819
-C h t
--0.579
--0.567
--0.579
+C_l_delta_a​​ = 0.229; %Rollmomentbeiwert pro Querruderausschlag (Aileron)
+C_l_delta_r = 0.0147; %Rollmomentbeiwert pro Seitenruderausschlag (Rudder)??????????
+C_y_delta_a = 0; %Seitenkraftbeiwert pro QuerruderausschlagSeitenkraftbeiwert pro Querruderausschlag??????????
+C_y_delta_r = 0.187; %Seitenkraftbeiwert pro Seitenruderausschlag??????????
+C_n_delta_a = -0.0786; %Giermomentbeiwert pro Querruderausschlag??????????
+C_n_delta_r = -0.0604; %Giermomentbeiwert pro Seitenruderausschlag??????????
+C_h_alpha_a = nan; %Scharniermomentbeiwert des Querruders pro Querruderausschlag??????????
+C_h_delta_a = -0.369; %Scharniermomentbeiwert pro Schiebewinkel beta??????????
+C_h_beta_v= 0.0819; %???????????
+C_h_delta_r = -0.579; %Scharniermomentbeiwert pro Seitenruderausschlag??????????
 
 
 

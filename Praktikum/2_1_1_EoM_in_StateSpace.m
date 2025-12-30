@@ -3,24 +3,6 @@ clc
 
 
 %% system Matrix (A_long) and input Matrix (C_long) for longitudinal motion
-M_q = ;
-Z_q = ;
-U_1 = ;
-Z_alphap = ;
-M_alpha =  ;
-Thetha_R = ;
-g = ;
-M_Talpha = ;
-X_alpha = ;
-X_u = ;
-X_Tu = ;
-M_u = ; 
-M_Tu = ;
-Z_u = ;
-
-M_delta_e = ;
-Z_delta_e = ;
-
 
 
 A_long = [(M_q + (Z_q+U_1)/(U_1-Z_alphap) * M_alpha)    ((-sin(Theta_R)*g*M_alpha)/(U_1-Z_alphap))  (M_alpha + M_Talpha + (Z_alpha*M_alpha)/(U_1-Z_alphap))     (M_u + M_Tu + (Z_u *M_alpha)/(U_1 - Z_alphap)); ...
