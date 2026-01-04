@@ -92,7 +92,61 @@ C_h_delta_r = -0.579; %Scharniermomentbeiwert pro Seitenruderausschlag??????????
 
 
 
+%% Longitudinal Transfer Function Data
 
+Altitude = 5000; % ft
+U_1 = 130.39 %kts
+W_current = 2650.0 %lb
+S_W = 174.00 %ft^2
+C_bar = 4.90 %ft
+Iyy_B = 1346 %slgft2
+C_m_1 = 0.0000
+C_m_u = 0.0000
+C_m_a = -0.6130 %1/rad
+C_m_a.dot = -7.2700 %1/rad
+C_m_q = -12.4000 %1/rad
+C_m_T_1 = 0.0000
+C_m_T_u = 0.0000
+C_m_T_a = 0.0000
+C_L_1 = 0.3070
+C_L_u = 0.0000
+C_L_a = 4.4100 %1/rad
+C_L_a.dot = 1.7000 %1/rad
+C_L_q = 3.9000 %1/rad
+C_D_1 = 0.0320
+C_D_a = 0.1210 %1/rad
+C_D_u = 0.0000
+C_T_X_1 = 0.0320
+C_T_X_u = -0.0960
+C_L_d_e = 0.4300 %1/rad
+C_D_d_e = 0.0000 %1/rad
+C_m_d_e = -1.1220 %1/rad
+
+M_1 = 0.201
+n = 1.00 %g
+q_bar = 49.60 %psf
+(W/S)_TO = 15.23 %psf
+Theta_1 = 0.00 %deg
+X_u = -0.0304 %1/s
+X_T_u = -0.0152 %1/s
+X_a = 19.4588 %ft/s^2
+Z_u = -0.2919 %1/s
+Z_a = -464.7095 %ft/s^2
+Z_a_dot = -1.9799 %ft/s
+Z_q = -4.5422 %ft/s
+M_u = 0.0000 %1/ft/s
+M_T_u = 0.0000 %1/ft/s
+M_a = -19.2591 %1/s^2
+M_T_a = 0.0000 %1/s^2
+M_a_dot = -2.5428 %1/s
+M_q = -4.3370 %1/s
+
+w_n_SP = 5.2707 %rad/s
+z_SP = 0.8442
+w_n_P = 0.1711 %rad/s
+z_p = 0.1289
+X_del_e = 0.0000 %ft/s^2
+Z_del_e = -44.9854 %ft/s^2
 
 
 

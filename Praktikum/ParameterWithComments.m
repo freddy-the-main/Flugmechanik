@@ -102,128 +102,163 @@ C_h_beta_v = 0.0819;   %Seitenruderscharniermoment pro Schiebewinkel β
 C_h_delta_r = -0.579;  %Seitenruderscharniermoment pro Seitenruderausschlag
 
 
+%% Longitudinal Transfer Function Data
+
+% Flugzustand / Trimmpunkt
+Altitude = 5000;     %Flughöhe über NN (ft)
+U_1 = 130.39;        %getrimmte Fluggeschwindigkeit U0 (knots)
+W_current = 2650.0;  %aktuelles Flugzeuggewicht W (lb)
+S_W = 174.00;        %Flügelreferenzfläche S (ft^2)
+C_bar = 4.90;        %mittlere aerodynamische Tiefe c̄ (ft)
+Iyy_B = 1346;        %Trägheitsmoment um Nickachse (slug·ft^2)
+
+%Getrimmte aerodynamische Koeffizienten
+C_m_1 = 0.0000;      %Nickmomentbeiwert im Trimmpunkt
+C_L_1 = 0.3070;      %Auftriebsbeiwert im Trimmpunkt
+C_D_1 = 0.0320;      %Widerstandsbeiwert im Trimmpunkt
+C_T_X_1 = 0.0320;    %Schubbeiwert in x-Richtung im Trimmpunkt
+
+%Nickmoment-Ableitungen
+C_m_u = 0.0000;      %Nickmomentänderung durch Geschwindigkeitsstörung u
+C_m_a = -0.6130;     %Nickmomentbeiwert pro Anstellwinkel α (1/rad)
+C_m_a_dot = -7.2700; %Nickmomentbeiwert pro normierter α̇ (1/rad)
+C_m_q = -12.4000;    %Nickmomentbeiwert pro Nickrate q (1/rad)
+
+%Nickmoment durch Schub
+C_m_T_1 = 0.0000;    %Nickmomentbeitrag durch Schub im Trimmpunkt
+C_m_T_u = 0.0000;    %Nickmomentänderung durch Schub bei u
+C_m_T_a = 0.0000;    %Nickmomentänderung durch Schub bei α
+
+%Auftriebs-Ableitungen
+C_L_u = 0.0000;      %Auftriebsänderung durch Geschwindigkeitsstörung u
+C_L_a = 4.4100;      %Auftriebsanstieg pro Anstellwinkel α (1/rad)
+C_L_a_dot = 1.7000;  %Auftrieb durch normierte α̇
+C_L_q = 3.9000;      %Auftrieb durch Nickrate q
+
+%Widerstands-Ableitungen
+C_D_a = 0.1210;      %Widerstandsanstieg pro Anstellwinkel α (1/rad)
+C_D_u = 0.0000;      %Widerstandsänderung durch u
+C_T_X_u = -0.0960;   %Schubänderung in x-Richtung durch u
+
+%Steuerderivate (Höhenruder)
+C_L_d_e = 0.4300;    %Auftriebsbeiwert pro Höhenruderausschlag δe
+C_D_d_e = 0.0000;    %Widerstandsbeiwert pro Höhenruderausschlag
+C_m_d_e = -1.1220;   %Nickmomentbeiwert pro Höhenruderausschlag
+
+%Weitere Flugzustandsgrößen
+M_1 = 0.201;         %Machzahl im Trimmpunkt
+n = 1.00;            %Lastvielfaches n (g)
+q_bar = 49.60;       %Staudruck q̄ (psf)
+(W/S)_TO = 15.23;    %Flächenbelastung W/S (psf)
+Theta_1 = 0.00;      %Nickwinkel Θ im Trimmpunkt (deg)
+
+%Linearisierte Kraftableitungen (Dimensional)
+X_u = -0.0304;       %x-Kraftänderung durch u (1/s)
+X_T_u = -0.0152;     %x-Kraft durch Schubänderung bei u
+X_a = 19.4588;       %x-Kraftänderung durch α (ft/s^2)
+
+Z_u = -0.2919;       %z-Kraftänderung durch u (1/s)
+Z_a = -464.7095;     %z-Kraftänderung durch α (ft/s^2)
+Z_a_dot = -1.9799;   %z-Kraft durch α̇ (ft/s)
+Z_q = -4.5422;       %z-Kraft durch Nickrate q (ft/s)
+
+%Linearisierte Momentenableitungen (Dimensional)
+M_u = 0.0000;        %Nickmomentänderung durch u (1/(ft·s))
+M_T_u = 0.0000;      %Nickmoment durch Schubänderung bei u
+M_a = -19.2591;      %Nickmomentänderung durch α (1/s^2)
+M_T_a = 0.0000;      %Nickmoment durch Schub bei α
+M_a_dot = -2.5428;   %Nickmoment durch α̇ (1/s)
+M_q = -4.3370;       %Nickmomentdämpfung durch Nickrate q (1/s)
+
+%Eigenbewegungen (Moden)
+w_n_SP = 5.2707;     %Eigenkreisfrequenz der Short-Period-Mode (rad/s)
+z_SP = 0.8442;       %Dämpfungsgrad der Short-Period-Mode
+
+w_n_P = 0.1711;      %Eigenkreisfrequenz der Phugoid-Mode (rad/s)
+z_p = 0.1289;        %Dämpfungsgrad der Phugoid-Mode
+
+%Steuerkraft-Ableitungen (dimensional)
+X_del_e = 0.0000;    %x-Kraft durch Höhenruderausschlag δe (ft/s^2)
+Z_del_e = -44.9854;  %z-Kraft durch Höhenruderausschlag δe (ft/s^2)
 
 
+%% Lateral-Directinal Transfer Function Data
 
+%Flugzustand / Geometrie / Masse
+W_current = 2650.0;      % lb
+Altitude  = 5000;        % ft
+S_w       = 174.00;      % ft^2
+U_1       = 130.39;      % kts
+Theta_1   = 0.00;        % deg
+Alpha     = 0.00;        % deg
+b_w       = 36.00;       % ft
 
-Altitude = 5000; % ft
-U_1
+I_xx_B = 948;            % slug·ft^2
+I_zz_B = 1967;           % slug·ft^2
+I_xz_B = 0;              % slug·ft^2
 
-M_1
-0.201
-130.39 kts
-n 1.00 g
-W_current = 2650.0 lb
-q_bar
-49.60 psf
-S_W
-174.00 ft^2
-(W/S)_TO
-15.23 psf
-Theta_1
-0.00 deg
-X_u
--0.0304 1/s
-C_bar
-4.90 ft
-X_T_u
--0.0152 1/s
-Iyy_B
-=
-1346 slgft2
-X_a
-19.4588 ft/s^2
-C_m_1
-0.0000
-2_u
--0.2919 1/s
-C_m_u
-=
-0.0000
-2_a
-=
-C_m_a
--0.6130 1/rad
-Z_a_dot
-C_m_a.dot =
--7.2700 1/rad
-29
-=
-C_m_q
-=
--12.4000 1/rad
-M_u
-C_m_T_1
-0.0000
-M_T_u
--464.7095 ft/s^2
--1.9799 ft/s
--4.5422 ft/s
-0.0000 1/ft/s
-0.0000 1/ft/s
-C_m_T_u 0.0000
-M_a
-=
--19.2591 1/s^2
-C_m_T_a =
-0.0000
-C_L_1
-0.3070
-M_T_a
-M_a_dot
-0.0000 1/s^2
--2.5428
-1/s
-C_L_u =
-0.0000
-M_q
--4.3370 1/s
-C_L_a
-=
-4.4100 1/rad
-C_L_a.dot =
-1.7000 1/rad
-C_L_q
-=
-3.9000 1/rad
-C_D_1
-0.0320
-C_D_a
-= 0.1210 1/rad
-w_n_SP
-5.2707 rad/s
-C_D_u
-0.0000
-Z_SP
-0.8442
-C_T_X_1
-0.0320
-w_n_P
-0.1711 rad/s
-C_T_X_u =
--0.0960
-0.1289
-C_L_d_e
-0.4300 1/rad
-X_del_e
-=
-0.0000 ft/s^2
-C_D_d_e
-=
-0.0000 1/rad
-Z_del_e
--44.9854 ft/s^2
-C_m_d_e
-=
--1.1220 1/rad
-M_del_e
--35.2508 1/s^2
+%Dimensionslose laterale Stabilitätsderivate
+C_l_B   = -0.0923;       % 1/rad
+C_l_p   = -0.4840;       % 1/rad
+C_l_r   =  0.0798;       % 1/rad
 
+C_n_B   =  0.0587;       % 1/rad
+C_n_T_B =  0.0000;       % 1/rad
+C_n_p   = -0.0278;       % 1/rad
+C_n_r   = -0.0937;       % 1/rad
 
+C_y_B   = -0.3930;       % 1/rad
+C_y_p   = -0.0750;       % 1/rad
+C_y_r   =  0.2140;       % 1/rad
 
+%Dimensionslose Steuerderivate
+C_l_d_a =  0.2290;       % 1/rad
+C_l_d_r =  0.0147;       % 1/rad
 
+C_n_d_a = -0.0216;       % 1/rad
+C_n_d_r = -0.0645;       % 1/rad
 
+C_y_d_a =  0.0000;       % 1/rad
+C_y_d_r =  0.1870;       % 1/rad
 
+%Weitere Referenzgrößen
+W_S_TO = 15.23;          % psf
+q_bar  = 49.60;          % psf
+I_xx_S = 948;            % slug·ft^2
+I_zz_S = 1967;           % slug·ft^2
+I_xz_S = 0;              % slug·ft^2
+
+%Dimensionale Kraft- und Momentenableitungen
+Y_B = -41.1146;          % ft/s^2
+Y_p = -0.6417;           % ft/s
+Y_r =  1.8311;           % ft/s
+
+L_B = -30.2497;          % 1/s^2
+L_p = -12.9738;          % 1/s
+L_r =  2.1391;           % 1/s
+
+N_B =  9.2717;           % 1/s^2
+N_T_B = 0.0000;          % 1/s^2
+N_p = -0.3591;           % 1/s
+N_r = -1.2105;           % 1/s
+
+%Eigenbewegungen / Zeitkonstanten
+w_n_D      = 3.2448;     % rad/s
+z_D        = 0.2066;     % -
+TC_SPIRAL  = 55.922;     % s
+TC_ROLL    = 0.077;      % s
+TC_1       = 0.077;      % s
+TC_2       = 55.922;     % s
+
+%Steuerkraft-Ableitungen (dimensional)
+Y_del_a =  0.0000;       % ft/s^2
+Y_del_r = 19.5634;       % ft/s^2
+
+L_del_a = 75.0507;       % 1/s^2
+L_del_r =  4.8177;       % 1/s^2
+
+N_del_a = -3.4117;       % 1/s^2
+N_del_r = -10.1879;      % 1/s^2
 
 
 
