@@ -19,10 +19,11 @@ b = 36 * ft_to_m;             % Wingspan (m)
 %% Flight Condition Data
 h = 0 * ft_to_m;              % Flight altitude (m)
 M = 0.096;                    % Mach number (dimensionless)
-U_l = 107.1 * ft_to_m;        % True airspeed (m/s)
+U_1 = 107.1 * ft_to_m;        % True airspeed (m/s)
 q_bar = 13.6 * lb_ft2_to_N_m2; % Dynamic pressure (N/m²)
 c_bar = 0.264;                % CG position x_cg/c̄ (dimensionless)
-alpha_l = 4 * deg_to_rad;     % Angle of attack (rad)
+alpha_1 = 4 * deg_to_rad;     % Angle of attack (rad) vielleicht lieber alpha_1?????????????????
+g = 9.81;                     % gravity [m/s²]
 
 %% Mass Data
 W = 2650 * lb_to_N;           % Aircraft weight (N)
@@ -49,7 +50,7 @@ C_T_x_u = -0.396;   % Thrust coefficient derivative with respect to u
 C_L_0 = 0.807;      % Lift coefficient at α = 0
 C_L_u = 0;          % Lift change due to u
 C_L_alpha = 4.41;   % Lift curve slope (1/rad)
-C_L_alphap = 1.7;   % Lift per normalized α rate
+C_L_alpha_dot = 1.7;   % Lift per normalized α rate
 C_L_q = 3.9;        % Lift per pitch rate q
 
 C_m_0 = 0.09;       % Pitch moment coefficient at α = 0
@@ -126,12 +127,12 @@ C_m_T_a = 0.0000;    % Pitch moment change from thrust due to α
 
 % Lift derivatives
 C_L_u = 0.0000;      % Lift change due to u
-C_L_a = 4.4100;      % Lift curve slope (1/rad)
-C_L_a_dot = 1.7000;  % Lift per normalized α̇
+C_L_alpha = 4.4100;      % Lift curve slope (1/rad)
+C_L_alpha_dot = 1.7000;  % Lift per normalized α̇
 C_L_q = 3.9000;      % Lift per pitch rate q
 
 % Drag derivatives
-C_D_a = 0.1210;      % Drag increase per α (1/rad)
+C_D_alpha = 0.1210;      % Drag increase per α (1/rad)
 C_D_u = 0.0000;      % Drag change due to u
 C_T_X_u = -0.0960;   % Thrust change in x-direction due to u
 
@@ -150,19 +151,19 @@ Theta_1 = 0.00 * deg_to_rad; % Pitch angle in trim (rad)
 % Linearized force derivatives (dimensional)
 X_u = -0.0304;       % x-force change due to u (1/s)
 X_T_u = -0.0152;     % x-force from thrust change due to u
-X_a = 19.4588 * ft_to_m; % x-force change due to α (m/s²)
+X_alpha = 19.4588 * ft_to_m; % x-force change due to α (m/s²)
 
 Z_u = -0.2919;       % z-force change due to u (1/s)
-Z_a = -464.7095 * ft_to_m; % z-force change due to α (m/s²)
-Z_a_dot = -1.9799 * ft_to_m; % z-force per α̇ (m/s)
+Z_alpha = -464.7095 * ft_to_m; % z-force change due to α (m/s²)
+Z_alpha_dot = -1.9799 * ft_to_m; % z-force per α̇ (m/s)
 Z_q = -4.5422 * ft_to_m; % z-force per pitch rate q (m/s)
 
 % Linearized moment derivatives (dimensional)
 M_u = 0.0000;        % Pitch moment change due to u (1/(m·s))
 M_T_u = 0.0000;      % Pitch moment from thrust change due to u
-M_a = -19.2591;      % Pitch moment change due to α (1/s²)
-M_T_a = 0.0000;      % Pitch moment from thrust due to α
-M_a_dot = -2.5428;   % Pitch moment per α̇ (1/s)
+M_alpha = -19.2591;      % Pitch moment change due to α (1/s²)
+M_T_alpha = 0.0000;      % Pitch moment from thrust due to α
+M_alpha_dot = -2.5428;   % Pitch moment per α̇ (1/s)
 M_q = -4.3370;       % Pitch damping per pitch rate q (1/s)
 
 % Eigenmodes
@@ -173,8 +174,9 @@ w_n_P = 0.1711;      % Phugoid natural frequency (rad/s)
 z_p = 0.1289;        % Phugoid damping ratio
 
 % Control force derivatives (dimensional)
-X_del_e = 0.0000;    % x-force per elevator deflection δe (m/s²)
-Z_del_e = -44.9854 * ft_to_m; % z-force per elevator deflection δe (m/s²)
+X_delta_e = 0.0000;    % x-force per elevator deflection δe (m/s²)
+Z_delta_e = -44.9854 * ft_to_m; % z-force per elevator deflection δe (m/s²)
+M_delta_e = -35.2508;  % [1/s^2]    
 
 %% Lateral-Directinal Transfer Function Data
 W_current = 2650 * lb_to_N;      % N
@@ -190,16 +192,16 @@ I_zz_B = 1967 * slug_ft2_to_kg_m2;    % kg·m²
 I_xz_B = 0 * slug_ft2_to_kg_m2;       % kg·m²
 
 % Dimensionless lateral stability derivatives
-C_l_B   = -0.0923;       % 1/rad
+C_l_beta   = -0.0923;       % 1/rad
 C_l_p   = -0.4840;       % 1/rad
 C_l_r   =  0.0798;       % 1/rad
 
-C_n_B   =  0.0587;       % 1/rad
-C_n_T_B =  0.0000;       % 1/rad
+C_n_beta   =  0.0587;       % 1/rad
+C_n_T_beta =  0.0000;       % 1/rad
 C_n_p   = -0.0278;       % 1/rad
 C_n_r   = -0.0937;       % 1/rad
 
-C_y_B   = -0.3930;       % 1/rad
+C_y_beta   = -0.3930;       % 1/rad
 C_y_p   = -0.0750;       % 1/rad
 C_y_r   =  0.2140;       % 1/rad
 
@@ -221,16 +223,16 @@ I_zz_S = 1967 * slug_ft2_to_kg_m2;  % kg·m²
 I_xz_S = 0 * slug_ft2_to_kg_m2;     % kg·m²
 
 % Dimensional force and moment derivatives
-Y_B = -41.1146 * ft_to_m;          % m/s²
+Y_beta = -41.1146 * ft_to_m;          % m/s²
 Y_p = -0.6417 * ft_to_m;           % m/s
 Y_r =  1.8311 * ft_to_m;           % m/s
 
-L_B = -30.2497;                    % 1/s²
+L_beta = -30.2497;                    % 1/s²
 L_p = -12.9738;                    % 1/s
 L_r =  2.1391;                     % 1/s
 
-N_B =  9.2717;                     % 1/s²
-N_T_B = 0.0000;                    % 1/s²
+N_beta =  9.2717;                     % 1/s²
+N_T_beta = 0.0000;                    % 1/s²
 N_p = -0.3591;                     % 1/s
 N_r = -1.2105;                     % 1/s
 
@@ -243,14 +245,14 @@ TC_1       = 0.077;                % s
 TC_2       = 55.922;               % s
 
 % Control force derivatives (dimensional)
-Y_del_a =  0.0000 * ft_to_m;       % m/s²
-Y_del_r = 19.5634 * ft_to_m;       % m/s²
+Y_delta_a =  0.0000 * ft_to_m;       % m/s²
+Y_delta_r = 19.5634 * ft_to_m;       % m/s²
 
-L_del_a = 75.0507;                 % 1/s²
-L_del_r =  4.8177;                 % 1/s²
+L_delta_a = 75.0507;                 % 1/s²
+L_delta_r =  4.8177;                 % 1/s²
 
-N_del_a = -3.4117;                 % 1/s²
-N_del_r = -10.1879;                % 1/s²
+N_delta_a = -3.4117;                 % 1/s²
+N_delta_r = -10.1879;                % 1/s²
 
 % Display SI units summary
 disp('=== CONVERSION TO SI UNITS COMPLETE ===');
