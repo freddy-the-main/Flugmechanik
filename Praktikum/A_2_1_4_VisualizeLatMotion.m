@@ -43,7 +43,7 @@ title("alpha in rad")
 
 subplot(4,1,4)
 plot(t,u)
-title("u, i dont what it means")
+title("u in m/s")
 
 
 

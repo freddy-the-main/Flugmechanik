@@ -10,8 +10,8 @@ run A_2_1_1_EoM_in_StateSpace.m;
 [eigVecLat, eigValLat] = eig(A_lat)
 
 % CP
-charPolyLong = poly(A_long)
-charPolyLat = poly(A_lat)
+charPolyLong = poly(A_long);
+charPolyLat = poly(A_lat);
 
 
 
