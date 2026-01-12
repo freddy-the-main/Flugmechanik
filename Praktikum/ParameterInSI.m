@@ -254,11 +254,3 @@ L_delta_r =  4.8177;                 % 1/s²
 N_delta_a = -3.4117;                 % 1/s²
 N_delta_r = -10.1879;                % 1/s²
 
-% Display SI units summary
-disp('=== CONVERSION TO SI UNITS COMPLETE ===');
-disp(['Wing area: ' num2str(S) ' m²']);
-disp(['Wingspan: ' num2str(b) ' m']);
-disp(['Weight: ' num2str(W) ' N']);
-disp(['Dynamic pressure: ' num2str(q_bar) ' N/m²']);
-disp(['Flight speed: ' num2str(U_1) ' m/s']);
-disp(['Altitude: ' num2str(Altitude) ' m']);
