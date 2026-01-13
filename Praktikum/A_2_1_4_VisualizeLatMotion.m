@@ -1,5 +1,6 @@
 clear
 clc
+clf
 
 run A_2_1_2_Eigenwerte_CP.m
 

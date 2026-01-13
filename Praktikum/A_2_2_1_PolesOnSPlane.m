@@ -4,9 +4,9 @@ clc
 run A_2_1_2_Eigenwerte_CP.m
 
 
-subplot(2,1,1)
+subplot(1,2,1)
 eigValLong(eigValLong==0) = nan;
-plot(real(eigValLong),imag(eigValLong),"o")
+plot(real(eigValLong),imag(eigValLong),"o",LineWidth=3)
 yline(0)
 xline(0)
 ylabel("imag")
@@ -23,9 +23,9 @@ ylim([-L, L])
 axis square
 
 
-subplot(2,1,2)
+subplot(1,2,2)
 eigValLat(eigValLat==0) = nan;
-plot(real(eigValLat),imag(eigValLat),"o")
+plot(real(eigValLat),imag(eigValLat),"o",LineWidth=3)
 yline(0)
 xline(0)
 ylabel("imag")
