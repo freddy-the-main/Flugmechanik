@@ -188,70 +188,82 @@ M_delta_e = -35.2508%;  % [1/s^2]
 Alpha     = 0.00 * deg_to_rad%;   % rad
 b_w       = 36 * ft_to_m%;        % m
 
-I_xx_B = 948 * slug_ft2_to_kg_m2%;     % kg·m²
-I_zz_B = 1967 * slug_ft2_to_kg_m2%;    % kg·m²
-I_xz_B = 0 * slug_ft2_to_kg_m2%;       % kg·m²
+%% Mass moments of inertia (body axes)
+I_xx_B = 948  * slug_ft2_to_kg_m2;  % Roll moment of inertia Ix [kg·m^2]
+I_zz_B = 1967 * slug_ft2_to_kg_m2;  % Yaw moment of inertia Iz [kg·m^2]
+I_xz_B = 0    * slug_ft2_to_kg_m2;  % Product of inertia Ixz [kg·m^2]
 
-% Dimensionless lateral stability derivatives
-%C_l_beta   = -0.0923%;       % 1/rad
-%C_l_p   = -0.4840%;       % 1/rad
-%C_l_r   =  0.0798%;       % 1/rad
+%% Dimensionless lateral stability derivatives
+% Roll moment coefficients
+%C_l_beta = -0.0923;    % Roll moment due to sideslip (Clβ)
+%C_l_p    = -0.4840;    % Roll damping due to roll rate (Clp)
+%C_l_r    =  0.0798;    % Roll due to yaw rate (Clr)
 
-%C_n_beta   =  0.0587%;       % 1/rad
-%C_n_T_beta =  0.0000%;       % 1/rad
-%C_n_p   = -0.0278%;       % 1/rad
-%C_n_r   = -0.0937%;       % 1/rad
+% Yaw moment coefficients
+%C_n_beta =  0.0587;    % Yawing moment due to sideslip (Cnβ)
+%C_n_T_beta = 0.0000;   % Yaw due to sideslip from thrust asymmetry
+%C_n_p    = -0.0278;    % Yaw due to roll rate (Cnp)
+%C_n_r    = -0.0937;    % Yaw damping due to yaw rate (Cnr)
 
-%C_y_beta   = -0.3930%;       % 1/rad
-%C_y_p   = -0.0750%;       % 1/rad
-%C_y_r   =  0.2140%;       % 1/rad
+% Side-force coefficients
+%C_y_beta = -0.3930;    % Side force due to sideslip (Cyβ)
+%C_y_p    = -0.0750;    % Side force due to roll rate (Cyp)
+%C_y_r    =  0.2140;    % Side force due to yaw rate (Cyr)
 
-% Dimensionless control derivatives
-C_l_d_a =  0.2290%;       % 1/rad
-C_l_d_r =  0.0147%;       % 1/rad
+%% Dimensionless control derivatives
+% Aileron effects
+C_l_d_a =  0.2290;      % Roll moment due to aileron deflection (Clδa)
+C_n_d_a = -0.0216;      % Yaw moment due to aileron deflection (Cnδa)
+C_y_d_a =  0.0000;      % Side force due to aileron deflection (Cyδa)
 
-C_n_d_a = -0.0216%;       % 1/rad
-C_n_d_r = -0.0645%;       % 1/rad
+% Rudder effects
+C_l_d_r =  0.0147;      % Roll moment due to rudder deflection (Clδr)
+C_n_d_r = -0.0645;      % Yaw moment due to rudder deflection (Cnδr)
+C_y_d_r =  0.1870;      % Side force due to rudder deflection (Cyδr)
 
-C_y_d_a =  0.0000%;       % 1/rad
-C_y_d_r =  0.1870%;       % 1/rad
+%% Reference aerodynamic and inertia quantities
+W_S_TO = 15.23 * lb_ft2_to_N_m2;    % Wing loading at takeoff [N/m^2]
+%q_bar  = 49.60 * lb_ft2_to_N_m2;   % Dynamic pressure at trim [N/m^2]
 
-% Additional reference parameters
-W_S_TO = 15.23 * lb_ft2_to_N_m2%;    % N/m²
-%q_bar  = 49.60 * lb_ft2_to_N_m2%;    % N/m²
-I_xx_S = 948 * slug_ft2_to_kg_m2%;   % kg·m²
-I_zz_S = 1967 * slug_ft2_to_kg_m2%;  % kg·m²
-I_xz_S = 0 * slug_ft2_to_kg_m2%;     % kg·m²
+I_xx_S = 948  * slug_ft2_to_kg_m2;  % Reference roll inertia [kg·m^2]
+I_zz_S = 1967 * slug_ft2_to_kg_m2;  % Reference yaw inertia [kg·m^2]
+I_xz_S = 0    * slug_ft2_to_kg_m2;  % Reference product of inertia [kg·m^2]
 
-% Dimensional force and moment derivatives
-Y_beta = -41.1146 * ft_to_m%;          % m/s²
-Y_p = -0.6417 * ft_to_m%;           % m/s
-Y_r =  1.8311 * ft_to_m%;           % m/s
+%% Dimensional lateral force and moment derivatives
+% Side-force derivatives
+Y_beta = -41.1146 * ft_to_m;        % Side force due to sideslip [m/s^2]
+Y_p    = -0.6417  * ft_to_m;        % Side force due to roll rate [m/s]
+Y_r    =  1.8311  * ft_to_m;        % Side force due to yaw rate [m/s]
 
-L_beta = -30.2497%;                    % 1/s²
-L_p = -12.9738%;                    % 1/s
-L_r =  2.1391%;                     % 1/s
+% Roll moment derivatives
+L_beta = -30.2497;                  % Roll acceleration due to sideslip [1/s^2]
+L_p    = -12.9738;                  % Roll damping derivative [1/s]
+L_r    =  2.1391;                   % Roll due to yaw rate [1/s]
 
-N_beta =  9.2717%;                     % 1/s²
-N_T_beta = 0.0000%;                    % 1/s²
-N_p = -0.3591%;                     % 1/s
-N_r = -1.2105%;                     % 1/s
+% Yaw moment derivatives
+N_beta =  9.2717;                   % Yaw acceleration due to sideslip [1/s^2]
+N_T_beta = 0.0000;                  % Yaw due to thrust sideslip coupling
+N_p    = -0.3591;                   % Yaw due to roll rate [1/s]
+N_r    = -1.2105;                   % Yaw damping derivative [1/s]
 
-% Eigenmodes / Time constants
-w_n_D      = 3.2448%;               % rad/s
-z_D        = 0.2066%;               % -
-TC_SPIRAL  = 55.922%;               % s
-TC_ROLL    = 0.077%;                % s
-TC_1       = 0.077%;                % s
-TC_2       = 55.922%;               % s
+%% Lateral–Directional motion mode characteristics
+w_n_D     = 3.2448;                 % Dutch-roll natural frequency [rad/s]
+z_D       = 0.2066;                 % Dutch-roll damping ratio [-]
+TC_SPIRAL = 55.922;                 % Spiral mode time constant [s]
+TC_ROLL   = 0.077;                  % Roll subsidence time constant [s]
+TC_1      = 0.077;                  % Fast real mode (roll) time constant [s]
+TC_2      = 55.922;                 % Slow real mode (spiral) time constant [s]
 
-% Control force derivatives (dimensional)
-Y_delta_a =  0.0000 * ft_to_m%;       % m/s²
-Y_delta_r = 19.5634 * ft_to_m%;       % m/s²
+%% Dimensional control force and moment derivatives
+% Side force due to control inputs
+Y_delta_a =  0.0000 * ft_to_m;      % Side force due to aileron [m/s^2]
+Y_delta_r = 19.5634 * ft_to_m;      % Side force due to rudder [m/s^2]
 
-L_delta_a = 75.0507%;                 % 1/s²
-L_delta_r =  4.8177%;                 % 1/s²
+% Roll moment due to control inputs
+L_delta_a = 75.0507;                % Roll acceleration due to aileron [1/s^2]
+L_delta_r =  4.8177;                % Roll acceleration due to rudder [1/s^2]
 
-N_delta_a = -3.4117%;                 % 1/s²
-N_delta_r = -10.1879%;                % 1/s²
+% Yaw moment due to control inputs
+N_delta_a = -3.4117;                % Yaw acceleration due to aileron [1/s^2]
+N_delta_r = -10.1879;               % Yaw acceleration due to rudder [1/s^2]
 
