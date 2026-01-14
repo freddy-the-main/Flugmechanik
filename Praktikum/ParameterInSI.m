@@ -147,7 +147,7 @@ M_1 = 0.201%;         % Mach number in trim
 n = 1.00%;            % Load factor n (g)
 %q_bar = 49.60 * lb_ft2_to_N_m2%; % Dynamic pressure (N/m²)
 bracket_W_S_bracket_TO = 15.23 * lb_ft2_to_N_m2%; % Wing loading (N/m²)
-Theta_1 = 0.00 * deg_to_rad%; % Pitch angle in trim (rad)
+phi_1 = 0.00 * deg_to_rad%; % Pitch angle in trim (rad)
 
 % Linearized force derivatives (dimensional)
 X_u = -0.0304%;       % x-force change due to u (1/s)
