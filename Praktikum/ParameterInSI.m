@@ -87,7 +87,7 @@ C_n_p = -0.0960%;        % Yaw moment per roll rate p
 C_n_r = -0.1151%;        % Yaw damping per yaw rate r
 
 %% Lateral-Directional Control and Hinge Moment Derivatives
-C_l_delta_a = 0.229%;    % Roll moment coefficient per aileron deflection δa
+C_l_delta_a = -0.229%;    % Roll moment coefficient per aileron deflection δa
 C_l_delta_r = 0.0147%;   % Roll moment coefficient per rudder deflection δr
 
 C_y_delta_a = 0%;        % Side force coefficient per aileron deflection
@@ -266,4 +266,9 @@ L_delta_r =  4.8177;                % Roll acceleration due to rudder [1/s^2]
 % Yaw moment due to control inputs
 N_delta_a = -3.4117;                % Yaw acceleration due to aileron [1/s^2]
 N_delta_r = -10.1879;               % Yaw acceleration due to rudder [1/s^2]
+
+
+A_1 = I_xz / I_xx;
+B_1 = I_xz / I_zz;
+
 

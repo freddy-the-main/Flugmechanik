@@ -3,24 +3,37 @@ clc
 
 run ParameterInSI.m
 
-%Convetion: x = [beta; r]
+%Convention: x = [beta; psi_dot]
 
-A_DutchRoll = [Y_beta/U_1   (Y_r/U_1)-1;...
+A = [Y_beta/U_1   (Y_r/U_1)-1;...
                N_beta       N_r];
 
-B_DutchRoll = [1;1];
+B = [Y_delta_r/U_1; (N_delta_r+B_1*L_delta_r)/(1+A_1*B_1)];
 
-C_DutchRoll = eye(2,2);
+C = eye(2,2);
 
-D_DutchRoll = zeros(2,1);
+D = zeros(2,1);
 
-sys_DutchRoll = ss(A_DutchRoll,B_DutchRoll,C_DutchRoll,D_DutchRoll);
+sys = ss(A,B,C,D);
 
-%characteristical Polinomial
-CP = poly(A_DutchRoll)
+%characteristic Polynomial
+CP_wo_Controller = poly(A)
+%D of the Plane without controller:
+D_wo_Controller = CP_wo_Controller(2)/(2*sqrt(CP_wo_Controller(3)))
 % we want this: D≥0,19 for level 1
 
+% SS from system with controller:
 
+%% Formula for k: 
+a = -A(2,2)+B(2)
+
+A_wi_controller = A-(B*[0 0.0721]);
+
+sys_FSF = ss(A_wi_controller,B,C,D);
+
+CP_wi_Controller = poly(A_wi_controller)
+%D of the Plane without controller:
+D_wi_Controller = CP_wi_Controller(2)/(2*sqrt(CP_wi_Controller(3)))
 
 
 
