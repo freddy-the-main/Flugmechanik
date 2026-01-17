@@ -52,3 +52,10 @@ eq2 = 2*D_damping*omega_0 == CP_sym(2);
 
 k1 = double(k1)
 k2 = double(k2)
+
+
+% check if the k values a correct:
+
+DutchRoll
+
+eigValuesAprxDR = eig(A_aprx - B_aprx*[k1 k2])
