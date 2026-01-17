@@ -1,3 +1,8 @@
+clear 
+clc
+
+run ParameterInSI.m
+
 
 
 %% Conversation factors
