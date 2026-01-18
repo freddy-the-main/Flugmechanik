@@ -5,7 +5,7 @@ clc
 ft_to_m = 0.3048%;
 ft2_to_m2 = 0.092903%;
 slug_to_kg = 14.5939%;
-slug_ft2_to_kg_m2 = 0.0421401%; % slug·ft² → kg·m²
+slug_ft2_to_kg_m2 = 1.35581795%; % slug·ft² → kg·m²
 lb_to_N = 4.44822%;
 lb_to_kg = 0.4535%; 
 lb_ft2_to_N_m2 = 47.8803%; % lb/ft² → N/m²
@@ -185,13 +185,13 @@ M_delta_e = -35.2508%;  % [1/s^2]
 %S_w       = 174 * ft2_to_m2%;     % m²
 %U_1       = 130.39 * kts_to_ms%;  % m/s
 %Theta_1   = 0.00 * deg_to_rad%;   % rad
-Alpha     = 0.00 * deg_to_rad%;   % rad
-b_w       = 36 * ft_to_m%;        % m
+% Alpha     = 0.00 * deg_to_rad%;   % rad
+% b_w       = 36 * ft_to_m%;        % m
 
 %% Mass moments of inertia (body axes)
-I_xx_B = 948  * slug_ft2_to_kg_m2;  % Roll moment of inertia Ix [kg·m^2]
-I_zz_B = 1967 * slug_ft2_to_kg_m2;  % Yaw moment of inertia Iz [kg·m^2]
-I_xz_B = 0    * slug_ft2_to_kg_m2;  % Product of inertia Ixz [kg·m^2]
+% I_xx_B = 948  * slug_ft2_to_kg_m2;  % Roll moment of inertia Ix [kg·m^2]
+% I_zz_B = 1967 * slug_ft2_to_kg_m2;  % Yaw moment of inertia Iz [kg·m^2]
+% I_xz_B = 0    * slug_ft2_to_kg_m2;  % Product of inertia Ixz [kg·m^2]
 
 %% Dimensionless lateral stability derivatives
 % Roll moment coefficients
@@ -212,60 +212,60 @@ I_xz_B = 0    * slug_ft2_to_kg_m2;  % Product of inertia Ixz [kg·m^2]
 
 %% Dimensionless control derivatives
 % Aileron effects
-C_l_d_a =  0.2290;      % Roll moment due to aileron deflection (Clδa)
-C_n_d_a = -0.0216;      % Yaw moment due to aileron deflection (Cnδa)
-C_y_d_a =  0.0000;      % Side force due to aileron deflection (Cyδa)
+% C_l_d_a =  0.2290;      % Roll moment due to aileron deflection (Clδa)
+% C_n_d_a = -0.0216;      % Yaw moment due to aileron deflection (Cnδa)
+% C_y_d_a =  0.0000;      % Side force due to aileron deflection (Cyδa)
+% 
+% % Rudder effects
+% C_l_d_r =  0.0147;      % Roll moment due to rudder deflection (Clδr)
+% C_n_d_r = -0.0645;      % Yaw moment due to rudder deflection (Cnδr)
+% C_y_d_r =  0.1870;      % Side force due to rudder deflection (Cyδr)
 
-% Rudder effects
-C_l_d_r =  0.0147;      % Roll moment due to rudder deflection (Clδr)
-C_n_d_r = -0.0645;      % Yaw moment due to rudder deflection (Cnδr)
-C_y_d_r =  0.1870;      % Side force due to rudder deflection (Cyδr)
+% %% Reference aerodynamic and inertia quantities
+% W_S_TO = 15.23 * lb_ft2_to_N_m2;    % Wing loading at takeoff [N/m^2]
+% %q_bar  = 49.60 * lb_ft2_to_N_m2;   % Dynamic pressure at trim [N/m^2]
+% 
+% I_xx_S = 948  * slug_ft2_to_kg_m2;  % Reference roll inertia [kg·m^2]
+% I_zz_S = 1967 * slug_ft2_to_kg_m2;  % Reference yaw inertia [kg·m^2]
+% I_xz_S = 0    * slug_ft2_to_kg_m2;  % Reference product of inertia [kg·m^2]
 
-%% Reference aerodynamic and inertia quantities
-W_S_TO = 15.23 * lb_ft2_to_N_m2;    % Wing loading at takeoff [N/m^2]
-%q_bar  = 49.60 * lb_ft2_to_N_m2;   % Dynamic pressure at trim [N/m^2]
-
-I_xx_S = 948  * slug_ft2_to_kg_m2;  % Reference roll inertia [kg·m^2]
-I_zz_S = 1967 * slug_ft2_to_kg_m2;  % Reference yaw inertia [kg·m^2]
-I_xz_S = 0    * slug_ft2_to_kg_m2;  % Reference product of inertia [kg·m^2]
-
-%% Dimensional lateral force and moment derivatives
-% Side-force derivatives
-Y_beta = -41.1146 * ft_to_m;        % Side force due to sideslip [m/s^2]
-Y_p    = -0.6417  * ft_to_m;        % Side force due to roll rate [m/s]
-Y_r    =  1.8311  * ft_to_m;        % Side force due to yaw rate [m/s]
-
-% Roll moment derivatives
-L_beta = -30.2497;                  % Roll acceleration due to sideslip [1/s^2]
-L_p    = -12.9738;                  % Roll damping derivative [1/s]
-L_r    =  2.1391;                   % Roll due to yaw rate [1/s]
-
-% Yaw moment derivatives
-N_beta =  9.2717;                   % Yaw acceleration due to sideslip [1/s^2]
-N_T_beta = 0.0000;                  % Yaw due to thrust sideslip coupling
-N_p    = -0.3591;                   % Yaw due to roll rate [1/s]
-N_r    = -1.2105;                   % Yaw damping derivative [1/s]
-
-%% Lateral–Directional motion mode characteristics
-w_n_D     = 3.2448;                 % Dutch-roll natural frequency [rad/s]
-z_D       = 0.2066;                 % Dutch-roll damping ratio [-]
-TC_SPIRAL = 55.922;                 % Spiral mode time constant [s]
-TC_ROLL   = 0.077;                  % Roll subsidence time constant [s]
-TC_1      = 0.077;                  % Fast real mode (roll) time constant [s]
-TC_2      = 55.922;                 % Slow real mode (spiral) time constant [s]
-
-%% Dimensional control force and moment derivatives
-% Side force due to control inputs
-Y_delta_a =  0.0000 * ft_to_m;      % Side force due to aileron [m/s^2]
-Y_delta_r = 19.5634 * ft_to_m;      % Side force due to rudder [m/s^2]
-
-% Roll moment due to control inputs
-L_delta_a = 75.0507;                % Roll acceleration due to aileron [1/s^2]
-L_delta_r =  4.8177;                % Roll acceleration due to rudder [1/s^2]
-
-% Yaw moment due to control inputs
-N_delta_a = -3.4117;                % Yaw acceleration due to aileron [1/s^2]
-N_delta_r = -10.1879;               % Yaw acceleration due to rudder [1/s^2]
+% %% Dimensional lateral force and moment derivatives
+% % Side-force derivatives
+Y_beta = (q_bar*S*C_y_beta)/W;        % Side force due to sideslip [m/s^2]
+Y_p    = (q_bar*S*b*C_y_p)/(2*W*U_1);        % Side force due to roll rate [m/s]
+Y_r    = (q_bar*S*b*C_y_r)/(2*W*U_1);        % Side force due to yaw rate [m/s]
+% 
+% % Roll moment derivatives
+L_beta = (q_bar*S*b*C_l_beta)/(I_xx);                  % Roll acceleration due to sideslip [1/s^2]
+L_p    = (q_bar*S*b^2*C_l_p)/(2*I_xx*U_1);                  % Roll damping derivative [1/s]
+L_r    = (q_bar*S*b^2*C_l_r)/(2*I_xx*U_1);                   % Roll due to yaw rate [1/s]
+% 
+% % Yaw moment derivatives
+N_beta   = (q_bar*S*b*C_n_beta)/(I_zz);                   % Yaw acceleration due to sideslip [1/s^2]
+N_T_beta = (q_bar*S*b*C_n_T_beta)/(I_zz);                  % Yaw due to thrust sideslip coupling
+N_p      = (q_bar*S*b^2*C_n_p)/(2*I_zz*U_1);                   % Yaw due to roll rate [1/s]
+N_r      = (q_bar*S*b^2*C_n_r)/(2*I_zz*U_1);                   % Yaw damping derivative [1/s]
+ 
+% % %% Lateral–Directional motion mode characteristics
+% % w_n_D     = 3.2448;                 % Dutch-roll natural frequency [rad/s]
+% % z_D       = 0.2066;                 % Dutch-roll damping ratio [-]
+% % TC_SPIRAL = 55.922;                 % Spiral mode time constant [s]
+% % TC_ROLL   = 0.077;                  % Roll subsidence time constant [s]
+% % TC_1      = 0.077;                  % Fast real mode (roll) time constant [s]
+% % TC_2      = 55.922;                 % Slow real mode (spiral) time constant [s]
+% 
+% %% Dimensional control force and moment derivatives
+% % Side force due to control inputs
+Y_delta_a = (q_bar*S*C_y_delta_a)/W;      % Side force due to aileron [m/s^2]
+Y_delta_r = (q_bar*S*C_y_delta_r)/W;      % Side force due to rudder [m/s^2]
+% 
+% % Roll moment due to control inputs
+L_delta_a = (q_bar*S*b*C_l_delta_a)/I_xx;                % Roll acceleration due to aileron [1/s^2]
+L_delta_r = (q_bar*S*b*C_l_delta_r)/I_xx;                % Roll acceleration due to rudder [1/s^2]
+% 
+% % Yaw moment due to control inputs
+N_delta_a = (q_bar*S*b*C_n_delta_a)/I_zz;                % Yaw acceleration due to aileron [1/s^2]
+N_delta_r = (q_bar*S*b*C_n_delta_r)/I_zz;               % Yaw acceleration due to rudder [1/s^2]
 
 
 A_1 = I_xz / I_xx;

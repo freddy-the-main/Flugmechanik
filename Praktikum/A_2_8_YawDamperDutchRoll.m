@@ -11,14 +11,14 @@ run ParameterInSI.m
 % beta     = sideslip angle
 % psi_dot  = yaw rate
 
-A = [ Y_beta/U_1      (Y_r/U_1) - 1; ...
-      N_beta          N_r ];
+A = [ Y_beta/U_1      ((Y_r/U_1) - 1); ...
+      N_beta          N_r ]
 % State matrix of the simplified Dutch-roll model
 % First row: sideslip dynamics
 % Second row: yaw-rate dynamics
 
 B = [ Y_delta_r/U_1; ...
-      (N_delta_r + B_1*L_delta_r)/(1 + A_1*B_1) ];
+     (N_delta_r + A_1*L_delta_r)/(1 + A_1*B_1) ]
 % Input matrix (rudder input delta_r)
 % First entry: side-force contribution of rudder
 % Second entry: yaw-moment contribution of rudder
