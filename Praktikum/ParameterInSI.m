@@ -69,7 +69,7 @@ C_L_delta_e = 0.43%;     % Lift coefficient per elevator deflection
 C_m_delta_e = -1.029%;   % Pitch moment coefficient per elevator deflection
 
 %% Longitudinal Hinge-Moment Derivatives
-C_h_q = -0.0549%;        % Elevator hinge moment per pitch rate q
+C_h_alpha = -0.0549%;        % Elevator hinge moment per pitch rate q
 C_h_delat_u = -0.594%;   % Elevator hinge moment per velocity disturbance u
 
 %% Lateral-Directional Stability Derivatives
@@ -106,48 +106,48 @@ C_h_delta_r = -0.579%;   % Rudder hinge moment per rudder deflection
 %U_1 = 130.39 * kts_to_ms%;      % Trimmed flight speed (m/s)
 %W_current = 2650 * lb_to_N%;    % Current aircraft weight (N)
 %S_W = 174 * ft2_to_m2%;         % Wing reference area (m²)
-C_bar = 4.9 * ft_to_m%;         % Mean aerodynamic chord (m)
-Iyy_B = 1346 * slug_ft2_to_kg_m2%; % Pitch moment of inertia (kg·m²)
+%C_bar = 4.9 * ft_to_m%;         % Mean aerodynamic chord (m)
+%Iyy_B = 1346 * slug_ft2_to_kg_m2%; % Pitch moment of inertia (kg·m²)
 
 % Trimmed aerodynamic coefficients
-C_m_1 = 0.0000%;      % Pitch moment coefficient in trim
-C_L_1 = 0.3070%;      % Lift coefficient in trim
-C_D_1 = 0.0320%;      % Drag coefficient in trim
-C_T_X_1 = 0.0320%;    % Thrust coefficient in x-direction in trim
+% C_m_1 = 0.0000%;      % Pitch moment coefficient in trim
+% C_L_1 = 0.3070%;      % Lift coefficient in trim
+% C_D_1 = 0.0320%;      % Drag coefficient in trim
+% C_T_X_1 = 0.0320%;    % Thrust coefficient in x-direction in trim
 
 % Pitch moment derivatives
-C_m_u = 0.0000%;      % Pitch moment change due to u
-C_m_a = -0.6130%;     % Pitch moment coefficient per α (1/rad)
-C_m_a_dot = -7.2700%; % Pitch moment coefficient per normalized α̇ (1/rad)
+%C_m_u = 0.0000%;      % Pitch moment change due to u
+%C_m_a = -0.6130%;     % Pitch moment coefficient per α (1/rad)
+%C_m_a_dot = -7.2700%; % Pitch moment coefficient per normalized α̇ (1/rad)
 %C_m_q = -12.4000%;    % Pitch moment coefficient per pitch rate q (1/rad)
 
 % Pitch moment from thrust
-C_m_T_1 = 0.0000%;    % Pitch moment contribution from thrust in trim
-C_m_T_u = 0.0000%;    % Pitch moment change from thrust due to u
-C_m_T_a = 0.0000%;    % Pitch moment change from thrust due to α
+% C_m_T_1 = 0.0000%;    % Pitch moment contribution from thrust in trim
+%C_m_T_u = 0.0000%;    % Pitch moment change from thrust due to u
+% C_m_T_a = 0.0000%;    % Pitch moment change from thrust due to α
 
 % Lift derivatives
-C_L_u = 0.0000%;      % Lift change due to u
-C_L_alpha = 4.4100%;      % Lift curve slope (1/rad)
-C_L_alpha_dot = 1.7000%;  % Lift per normalized α̇
-C_L_q = 3.9000%;      % Lift per pitch rate q
+%C_L_u = 0.0000%;      % Lift change due to u
+%C_L_alpha = 4.4100%;      % Lift curve slope (1/rad)
+%C_L_alpha_dot = 1.7000%;  % Lift per normalized α̇
+%C_L_q = 3.9000%;      % Lift per pitch rate q
 
 % Drag derivatives
-C_D_alpha = 0.1210%;      % Drag increase per α (1/rad)
-C_D_u = 0.0000%;      % Drag change due to u
-C_T_X_u = -0.0960%;   % Thrust change in x-direction due to u
+% C_D_alpha = 0.1210%;      % Drag increase per α (1/rad)
+% C_D_u = 0.0000%;      % Drag change due to u
+% C_T_X_u = -0.0960%;   % Thrust change in x-direction due to u
 
 % Control derivatives (elevator)
-C_L_d_e = 0.4300%;    % Lift coefficient per elevator deflection δe
-C_D_d_e = 0.0000%;    % Drag coefficient per elevator deflection
-C_m_d_e = -1.1220%;   % Pitch moment coefficient per elevator deflection
+% C_L_d_e = 0.4300%;    % Lift coefficient per elevator deflection δe
+% C_D_d_e = 0.0000%;    % Drag coefficient per elevator deflection
+% C_m_d_e = -1.1220%;   % Pitch moment coefficient per elevator deflection
 
 % Additional flight condition parameters
-M_1 = 0.201%;         % Mach number in trim
-n = 1.00%;            % Load factor n (g)
+% M_1 = 0.201%;         % Mach number in trim
+% n = 1.00%;            % Load factor n (g)
 %q_bar = 49.60 * lb_ft2_to_N_m2%; % Dynamic pressure (N/m²)
-bracket_W_S_bracket_TO = 15.23 * lb_ft2_to_N_m2%; % Wing loading (N/m²)
-phi_1 = 0.00 * deg_to_rad%; % Pitch angle in trim (rad)
+% bracket_W_S_bracket_TO = 15.23 * lb_ft2_to_N_m2%; % Wing loading (N/m²)
+% phi_1 = 0.00 * deg_to_rad%; % Pitch angle in trim (rad)
 
 % Linearized force derivatives (dimensional)
 X_u = -0.0304%;       % x-force change due to u (1/s)
@@ -184,7 +184,7 @@ M_delta_e = -35.2508%;  % [1/s^2]
 %Altitude  = 5000 * ft_to_m%;      % m
 %S_w       = 174 * ft2_to_m2%;     % m²
 %U_1       = 130.39 * kts_to_ms%;  % m/s
-%Theta_1   = 0.00 * deg_to_rad%;   % rad
+theta_1   = 0.00 * deg_to_rad%;   % rad
 % Alpha     = 0.00 * deg_to_rad%;   % rad
 % b_w       = 36 * ft_to_m%;        % m
 

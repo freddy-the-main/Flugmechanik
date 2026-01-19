@@ -79,26 +79,26 @@ cFTpS2MpS       = 0.3048;                   % conversion ft/s to m/s
 
 
  % Function Parameters
- S 			= 280 * cFTsq2Msq;			% wing reference area [m2]
- c			= 6.5 * cFT2M;				% MAC [m]
- b 			= 46 * cFT2M;			    % wing span [m]
+ S 			= 174 * cFTsq2Msq;			% wing reference area [m2]
+ c			= 4.9 * cFT2M;				% MAC [m]
+ b 			= 36 * cFT2M;			    % wing span [m]
  
  %% ----- Derivatives -----	
  % Longitudinal	
- CW0 			= 0.0969;
- CWalpha 		= 0.933;		
+ CW0 			= 0.0605; %updated
+ CWalpha 		= 0.1210;		
  
- CA0			= 0.76;	
- CAalpha 		= 6.24;
- CAq 			= 8.1;	
+ CA0			= 0.807;%updated
+ CAalpha 		= 4.41; %updated
+ CAq 			= 3.9;	%updated
  CAeta			= 0.58;
- CAalphadot		= 2.7;
+ CAalphadot		= 1.7;  %updated
  CAtas          = 0.027;
 			
- Cm0			=  0.1; 	      
- Cmalpha		= -2.08;
- Cmalphadot		= -9.1;
- Cmq			= -34.0; 	   
+ Cm0			=  0.09; %updated	      
+ Cmalpha		= -0.611;%updated
+ Cmalphadot		= -5.4;  %updated
+ Cmq			= -11.4; %updated	   
  Cmeta 			= -1.9; 	   
 
  % Lateral	
@@ -108,19 +108,19 @@ cFTpS2MpS       = 0.3048;                   % conversion ft/s to m/s
  CQr			=  0.39;			
  CQrud			=  0.144;	
  
- Cl0			=  0.0;
- Clbeta			= -0.13;	
- Clp			= -0.5;
- Clr			=  0.06;
- Clail			= -0.156;
- Clrud  		=  0.0087;
+ Cl0			=  0.807; %updated
+ Clbeta			= -0.0969;	%updated
+ Clp			= -0.494;%updated
+ Clr			=  0.2039;%updated
+ Clail			= -0.229;%updated
+ Clrud  		=  0.0147;%updated
  
  Cn0			=  0.00;	
- Cnbeta			=  0.12;	
- Cnp 			= -0.005;	
- Cnr 			= -0.204;
- Cnail			= -0.0012;
- Cnrud  		= -0.0763;		
+ Cnbeta			=  0.0701; %updated	
+ Cnp 			= -0.096;%updated	
+ Cnr 			= -0.1151;%updated
+ Cnail			= -0.0786;%updated
+ Cnrud  		= -0.0604;%updated
  		
  % Code. DO NOT EDIT !!!
  % rate star

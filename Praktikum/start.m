@@ -19,18 +19,18 @@ INI.POS(2)      = -2.135559848047296;       % [rad]
 INI.POS(3)      =  2000;                    % [m]
 INI.EULER       = [0 0 -1.0890];            % [rad]
 INI.PQR         = [0 0 0];                  % [rad/s]
-INI.mass        = 11000*cLBS2KG;            % [kg]
-Ixx             = 15189*cSLUGFTsg2KGMsq;    % [kgm²]
-Iyy             = 20250*cSLUGFTsg2KGMsq;    % [kgm²]
-Izz             = 34141*cSLUGFTsg2KGMsq;    % [kgm²]
-Ixz             = 4371*cSLUGFTsg2KGMsq;     % [kgm²]
+INI.mass        = W;            % [kg]
+% Ixx             = 15189*cSLUGFTsg2KGMsq;    % [kgm²]
+% Iyy             = 20250*cSLUGFTsg2KGMsq;    % [kgm²]
+% Izz             = 34141*cSLUGFTsg2KGMsq;    % [kgm²]
+% Ixz             = 4371*cSLUGFTsg2KGMsq;     % [kgm²]
 INI.Inertia     = [Ixx 0 -Ixz;0 Iyy 0; -Ixz 0 Izz]; % [kgm²]
 
 %% earth gravity
-g = 9.807;
+% g = 9.807;
 
 %% simulation sample time [s]
-sampletime = 1/100.0;
+sampletime = (1/30)/10;
 
 
-open('FlightModel_Beech_App.slx')
+open('A_2_10_FlightModel.slx')
