@@ -3,6 +3,12 @@ clc
 
 run ParameterInSI.m
 
+% inputs:
+throtle = 0;
+yaw = 0;
+pitch = 0;
+roll = 0;
+
 
 
 %% Conversation factors
@@ -24,7 +30,7 @@ INI.mass        = W;            % [kg]
 % Iyy             = 20250*cSLUGFTsg2KGMsq;    % [kgm²]
 % Izz             = 34141*cSLUGFTsg2KGMsq;    % [kgm²]
 % Ixz             = 4371*cSLUGFTsg2KGMsq;     % [kgm²]
-INI.Inertia     = [Ixx 0 -Ixz;0 Iyy 0; -Ixz 0 Izz]; % [kgm²]
+INI.Inertia     = [I_xx 0 -I_xz;0 I_yy 0; -I_xz 0 I_zz]; % [kgm²]
 
 %% earth gravity
 % g = 9.807;

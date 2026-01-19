@@ -79,14 +79,14 @@ cFTpS2MpS       = 0.3048;                   % conversion ft/s to m/s
 
 
  % Function Parameters
- S 			= 174 * cFTsq2Msq;			% wing reference area [m2]
- c			= 4.9 * cFT2M;				% MAC [m]
- b 			= 36 * cFT2M;			    % wing span [m]
+ S 			= 174 * cFTsq2Msq;	 %updated		% wing reference area [m2]
+ c			= 4.9 * cFT2M;		 %updated		% MAC [m]
+ b 			= 36 * cFT2M;		 %updated	    % wing span [m]
  
  %% ----- Derivatives -----	
  % Longitudinal	
  CW0 			= 0.0605; %updated
- CWalpha 		= 0.1210;		
+ CWalpha 		= 0.1210; %updated	
  
  CA0			= 0.807;%updated
  CAalpha 		= 4.41; %updated
@@ -95,7 +95,7 @@ cFTpS2MpS       = 0.3048;                   % conversion ft/s to m/s
  CAalphadot		= 1.7;  %updated
  CAtas          = 0.027;
 			
- Cm0			=  0.09; %updated	      
+ Cm0			=  0.0;      
  Cmalpha		= -0.611;%updated
  Cmalphadot		= -5.4;  %updated
  Cmq			= -11.4; %updated	   
@@ -103,12 +103,12 @@ cFTpS2MpS       = 0.3048;                   % conversion ft/s to m/s
 
  % Lateral	
  CQ0			=  0.00;		
- CQbeta			= -0.59;				
- CQp			= -0.21;	
- CQr			=  0.39;			
- CQrud			=  0.144;	
+ CQbeta			= -0.303;%updated				
+ CQp			= -0.213;%updated	
+ CQr			=  0.201;%updated			
+ CQrud			=  0.187;%updated	
  
- Cl0			=  0.807; %updated
+ Cl0			=  0;
  Clbeta			= -0.0969;	%updated
  Clp			= -0.494;%updated
  Clr			=  0.2039;%updated
