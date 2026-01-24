@@ -86,27 +86,27 @@ cFTpS2MpS       = 0.3048;                   % conversion ft/s to m/s
  %% ----- Derivatives -----	
  % Longitudinal	
  CW0 			= 0.0605; %updated
- CWalpha 		= 0.1210; %updated	
+ CWalpha 		= 0.547; %updated	
  
  CA0			= 0.807;%updated
  CAalpha 		= 4.41; %updated
  CAq 			= 3.9;	%updated
- CAeta			= 0.58;
+ CAeta			= 0.43;
  CAalphadot		= 1.7;  %updated
  CAtas          = 0.027;
 			
- Cm0			=  0.0;      
+ Cm0			=  0.09; %updated     
  Cmalpha		= -0.611;%updated
  Cmalphadot		= -5.4;  %updated
  Cmq			= -11.4; %updated	   
- Cmeta 			= -1.9; 	   
+ Cmeta 			= -1.209; 	   
 
  % Lateral	
  CQ0			=  0.00;		
- CQbeta			= -0.303;%updated				
- CQp			= -0.213;%updated	
- CQr			=  0.201;%updated			
- CQrud			=  0.187;%updated	
+ CQbeta			= -0.59;%updated				
+ CQp			= -0.21;%updated	
+ CQr			=  0.39;%updated			
+ CQrud			=  0.144;%updated	
  
  Cl0			=  0;
  Clbeta			= -0.0969;	%updated
